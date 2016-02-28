@@ -1,0 +1,25 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "Crear una aplicación en JavaScript.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calumet/javascript.git"
+  },
+  "keywords": [
+    "introduction",
+    "guide"
+  ],
+  "author": "Calumet (calumet.github.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calumet/javascript/issues"
+  },
+  "homepage": "https://github.com/calumet/javascript#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "underscore": "^1.8.3"
+  }
+}

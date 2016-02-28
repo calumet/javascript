@@ -1,2 +1,3 @@
-# javascript
-Crear aplicaciones JavaScript.
+# JavaScript
+
+Guía para crear una aplicación web escrita en JavaScript.
