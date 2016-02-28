@@ -17,73 +17,73 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Conseguir la lista de todos los contactos.
 app.get('/contacts', function (req, res) {
 
-  database.getAll().then(
-    function (results) {
-      res.json({
-        success: true,
-        data: results
-      });
+    database
+    .getAll()
+    .then(function (results) {
+        res.json({
+            success: true,
+            data: results
+        });
     },
     function (err) {
-      res.json({
-        error: err
-      });
-    }
-  );
+        res.json({
+            error: err
+        });
+    });
 });
 
 
 // Conseguir un solo contacto por identificador.
 app.get('/contact/:id', function (req, res) {
 
-  var id = Number(req.params.id);
+    var id = Number(req.params.id);
 
-  database.getById(id).then(
-    function (contact) {
-      if (contact) {
-        res.json({
-          success: true,
-          data: contact
-        });
-      } else {
-        res.json({
-          error: 'No encontrado.'
-        });
-      }
+    database
+    .getById(id)
+    .then(function (contact) {
+        if (contact) {
+            res.json({
+                success: true,
+                data: contact
+            });
+        } else {
+            res.json({
+                error: 'No encontrado.'
+            });
+        }
     },
     function (err) {
-      res.json({
-        error: err
-      });
-    }
-  );
+        res.json({
+            error: err
+        });
+    });
 });
 
 
 // Crear un nuevo contacto con los datos enviados por el body.
 app.post('/contact', function (req, res) {
 
-  var name = req.body.name;
-  var age = Number(req.body.age);
+    var name = req.body.name;
+    var age = Number(req.body.age);
 
-  var newContact = {
-    name: name,
-    age: age
-  };
+    var newContact = {
+        name: name,
+        age: age
+    };
 
-  database.create(newContact).then(
-    function (contact) {
-      res.json({
-        success: true,
-        data: contact
-      });
+    database
+    .create(newContact)
+    .then(function (contact) {
+        res.json({
+            success: true,
+            data: contact
+        });
     },
     function (err) {
-      res.json({
-        error: err
-      });
-    }
-  );
+        res.json({
+            error: err
+        });
+    });
 });
 
 
@@ -91,48 +91,48 @@ app.post('/contact', function (req, res) {
 // por el body.
 app.put('/contact/:id', function (req, res) {
 
-  var id = Number(req.params.id);
-  var name = req.body.name;
-  var age = Number(req.body.age);
+    var id = Number(req.params.id);
+    var name = req.body.name;
+    var age = Number(req.body.age);
 
-  var updateData = {
-    name: name,
-    age: age
-  };
+    var updateData = {
+        name: name,
+        age: age
+    };
 
-  database.updateById(id, updateData).then(
-    function (contact) {
-      res.json({
-        success: true,
-        data: contact
-      });
+    database
+    .updateById(id, updateData)
+    .then(function (contact) {
+        res.json({
+            success: true,
+            data: contact
+        });
     },
     function (err) {
-      res.json({
-        error: err
-      });
-    }
-  );
+        res.json({
+            error: err
+        });
+    });
 });
 
 
 // Borrar un contacto por identificador.
 app.delete('/contact/:id', function (req, res) {
 
-  var id = Number(req.params.id);
+    var id = Number(req.params.id);
 
-  database.removeById(id).then(
-    function () {
-      res.json({
-        success: true
-      });
+    database
+    .removeById(id)
+    .then(function () {
+        res.json({
+            success: true
+        });
     },
     function (err) {
-      res.json({
-        error: err
-      });
-    }
-  );
+        res.json({
+            error: err
+        });
+    });
 });
 
 
@@ -142,9 +142,9 @@ app.use(express.static(__dirname +'/public'));
 
 // Iniciar el servidor.
 app.listen(port, function (err) {
-  if (err) {
-    throw err;
-  }
+    if (err) {
+        throw err;
+    }
 
-  console.log('Servidor corriendo en http://127.0.0.1:'+ port);
+    console.log('Servidor corriendo en http://127.0.0.1:'+ port);
 });

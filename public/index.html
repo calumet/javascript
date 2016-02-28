@@ -1,59 +1,57 @@
 <!DOCTYPE HTML>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JavaScript</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-  </head>
-  <body>
-    <h1>JavaScript</h1>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>JavaScript</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <h1>JavaScript</h1>
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/underscore.min.js"></script>
-    <script src="/js/backbone.min.js"></script>
-    <script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/underscore.min.js"></script>
+        <script src="/js/backbone.min.js"></script>
+        <script>
 
-      // Crear un nuevo contacto con los datos especificados y mostrar el resultado
-      // en la consola.
-      $.ajax({
-        url: '/contact/',
-        type: 'post',
-        data: {
-          name: 'Maria',
-          age: 25
-        },
-        success: function (result) {
-        },
-        error: function () {
-        }
-      }).then(function (result) {
+            // Crear un nuevo contacto con los datos especificados y mostrar el resultado
+            // en la consola.
+            $.ajax({
+                url: '/contact/',
+                type: 'post',
+                data: {
+                    name: 'Maria',
+                    age: 25
+                }
+            })
+            .then(function (result) {
 
-        if (result.success) {
-          console.log('Éxito:', result.data);
-        } else {
-          console.error('Ha ocurrido un error:', result.error);
-        }
+                if (result.success) {
+                    console.log('Éxito:', result.data);
+                } else {
+                    console.error('Ha ocurrido un error:', result.error);
+                }
 
-        // Conseguir todos los usuarios actualmente encontrados en el servidor.
-        $.ajax({
-          url: '/contacts/',
-          type: 'get'
-        }).then(function (result) {
-          if (result.success) {
-            console.log('Éxito:', result.data);
-          } else {
-            console.error('Ha ocurrido un error:', result.error);
-          }
-        }, function () {
-          console.error('Ha ocurrido un error.');
-        });
+                // Conseguir todos los usuarios actualmente encontrados en el servidor.
+                $.ajax({
+                    url: '/contacts/',
+                    type: 'get'
+                })
+                .then(function (result) {
+                    if (result.success) {
+                        console.log('Éxito:', result.data);
+                    } else {
+                        console.error('Ha ocurrido un error:', result.error);
+                    }
+                }, function () {
+                    console.error('Ha ocurrido un error.');
+                });
 
-      }, function () {
-        console.error('Ha ocurrido un error.');
-      });
-    </script>
-  </body>
+            }, function () {
+                console.error('Ha ocurrido un error.');
+            });
+        </script>
+    </body>
 </html>
